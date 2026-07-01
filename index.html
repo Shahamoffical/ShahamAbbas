@@ -1010,11 +1010,11 @@
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="hidden md:flex space-x-8 items-center">
-                        <a href="#home" class="hover:text-blue-500 transition-colors">Home</a>
-                        <a href="#services" class="hover:text-blue-500 transition-colors">Services</a>
-                        <a href="#projects" class="hover:text-blue-500 transition-colors">Projects</a>
-                        <a href="#testimonials" class="hover:text-blue-500 transition-colors">Reviews</a>
-                        <a href="#contact"
+                        <a href="/" class="text-blue-500 font-semibold border-b-2 border-blue-500 pb-0.5">Home</a>
+                        <a href="/portfolio" class="hover:text-blue-500 transition-colors">Portfolio</a>
+                        <a href="/about" class="hover:text-blue-500 transition-colors">About</a>
+                        <a href="/pricing" class="hover:text-blue-500 transition-colors">Pricing</a>
+                        <a href="/contact"
                             class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">Hire
                             Me</a>
                         <button id="theme-toggle"
@@ -1033,11 +1033,11 @@
         </div>
         <div id="mobile-menu"
             class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-6 space-y-4">
-            <a href="#home" class="block text-lg font-medium">Home</a>
-            <a href="#services" class="block text-lg font-medium">Services</a>
-            <a href="#projects" class="block text-lg font-medium">Projects</a>
-            <a href="#testimonials" class="block text-lg font-medium">Reviews</a>
-            <a href="#contact" class="block text-lg font-medium text-blue-500">Hire Me</a>
+            <a href="/" class="block text-lg font-medium text-blue-500">Home</a>
+            <a href="/portfolio" class="block text-lg font-medium">Portfolio</a>
+            <a href="/about" class="block text-lg font-medium">About</a>
+            <a href="/pricing" class="block text-lg font-medium">Pricing</a>
+            <a href="/contact" class="block text-lg font-medium text-blue-500">Hire Me</a>
         </div>
     </nav>
 
@@ -1076,10 +1076,10 @@
                     applications. Let's turn your ideas into reality.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="#projects"
+                    <a href="/portfolio"
                         class="px-8 py-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-xl font-bold hover:scale-105 transition-transform text-center">View
                         My Work</a>
-                    <a href="#contact"
+                    <a href="/contact"
                         class="px-8 py-4 border border-slate-300 dark:border-slate-700 rounded-xl font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-center">Contact
                         Me</a>
                 </div>
@@ -1652,6 +1652,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- View All Projects CTA -->
+            <div class="text-center mt-16">
+                <a href="/portfolio"
+                    class="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold text-lg hover:from-blue-500 hover:to-indigo-500 hover:scale-105 transition-all shadow-lg shadow-blue-600/30">
+                    View All Projects <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <p class="mt-4 text-slate-500 text-sm">Explore my complete portfolio with case studies & details</p>
             </div>
         </div>
     </section>
@@ -2492,35 +2500,26 @@
                     </div>
                 </div>
 
-                <!-- Quick Links Column -->
                 <div>
                     <h4 class="text-white font-bold text-sm uppercase tracking-widest mb-6">Quick Links</h4>
                     <ul class="space-y-3">
-                        <li><a href="#home"
-                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
-                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Home</a>
+                        <li><a href="/"
+                                class="text-blue-400 font-semibold flex items-center gap-2 group"><span
+                                    class="w-4 h-px bg-blue-400"></span>Home</a>
                         </li>
-                        <li><a href="#services"
+                        <li><a href="/portfolio"
                                 class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
-                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Services</a>
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Portfolio</a>
                         </li>
-                        <li><a href="#skills"
+                        <li><a href="/about"
                                 class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
-                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Skills</a>
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>About</a>
                         </li>
-                        <li><a href="#projects"
-                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
-                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Projects</a>
-                        </li>
-                        <li><a href="#testimonials"
-                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
-                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Reviews</a>
-                        </li>
-                        <li><a href="#pricing"
+                        <li><a href="/pricing"
                                 class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
                                     class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Pricing</a>
                         </li>
-                        <li><a href="#contact"
+                        <li><a href="/contact"
                                 class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
                                     class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Contact</a>
                         </li>

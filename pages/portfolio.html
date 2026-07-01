@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== PRIMARY SEO ===== -->
+    <title>Portfolio | Shaham Abbas — Full-Stack Web Developer Projects</title>
+    <meta name="description"
+        content="Explore the portfolio of Shaham Abbas — real-world projects including e-commerce stores, WordPress sites, web applications, and modern UI/UX designs.">
+    <meta name="keywords"
+        content="Shaham Abbas portfolio, web development projects, WordPress projects, e-commerce websites, MERN stack projects, freelance developer portfolio">
+    <meta name="author" content="Shaham Abbas">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://shahamabbas.online/portfolio">
+
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shahamabbas.online/portfolio">
+    <meta property="og:title" content="Portfolio | Shaham Abbas — Web Developer Projects">
+    <meta property="og:description"
+        content="Browse real-world web development projects by Shaham Abbas. E-commerce, WordPress, web apps, and more.">
+    <meta property="og:image" content="https://shahamabbas.online/untitled-design.png">
+    <meta property="og:site_name" content="Shaham Abbas Portfolio">
+
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio | Shaham Abbas">
+    <meta name="twitter:description" content="Browse real-world web development projects by Shaham Abbas.">
+    <meta name="twitter:image" content="https://shahamabbas.online/untitled-design.png">
+
+    <!-- ===== PERFORMANCE ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <meta name="theme-color" content="#3b82f6">
+
+    <link rel="stylesheet" href="/public/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== PAGE LOAD ANIMATION ===== */
+        .page-enter {
+            animation: pageEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PORTFOLIO HERO GRADIENT MESH ===== */
+        .portfolio-hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #0f172a 100%);
+        }
+
+        .portfolio-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 20%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 45%);
+            animation: meshFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes meshFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(2%, -2%) rotate(1deg);
+            }
+
+            66% {
+                transform: translate(-1%, 1%) rotate(-0.5deg);
+            }
+        }
+
+        /* ===== PARTICLE DOTS ===== */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.3);
+            pointer-events: none;
+        }
+
+        /* ===== FILTER BUTTONS ===== */
+        .filter-pill {
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(255, 255, 255, 0.06);
+            color: #94a3b8;
+            backdrop-filter: blur(12px);
+        }
+
+        .filter-pill:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .filter-pill.active {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
+            transform: translateY(-2px);
+        }
+
+        /* ===== PROJECT CARDS (Enhanced) ===== */
+        .portfolio-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 24px 60px -12px rgba(99, 102, 241, 0.2);
+        }
+
+        .portfolio-card .card-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+        }
+
+        .portfolio-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .portfolio-card:hover .card-image img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-card .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+
+        .portfolio-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-overlay-actions {
+            display: flex;
+            gap: 10px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .portfolio-card:hover .card-overlay-actions {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .overlay-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .overlay-btn.primary {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .overlay-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .overlay-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .tech-tag {
+            display: inline-flex;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.12);
+            color: #818cf8;
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            letter-spacing: 0.03em;
+        }
+
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ===== CASE STUDY CARDS ===== */
+        .case-study-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .case-study-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 24px 60px -12px rgba(99, 102, 241, 0.15);
+            transform: translateY(-4px);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-gradient {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-gradient::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.2) 0%, transparent 60%);
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+        }
+
+        /* ===== LIGHT MODE ===== */
+        html:not(.dark) .portfolio-hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 40%, #f8fafc 100%);
+        }
+
+        html:not(.dark) .portfolio-hero::before {
+            background: radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 40%);
+        }
+
+        html:not(.dark) .portfolio-card {
+            background: white;
+            border-color: #e2e8f0;
+        }
+
+        html:not(.dark) .portfolio-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 24px 60px -12px rgba(99, 102, 241, 0.12);
+        }
+
+        html:not(.dark) .filter-pill {
+            background: white;
+            color: #475569;
+            border-color: #e2e8f0;
+        }
+
+        html:not(.dark) .filter-pill:hover {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        html:not(.dark) .filter-pill.active {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            border-color: transparent;
+        }
+
+        html:not(.dark) .stats-glass {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: #e2e8f0;
+        }
+
+        html:not(.dark) .case-study-card {
+            background: white;
+            border-color: #e2e8f0;
+        }
+
+        html:not(.dark) .particle {
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .whatsapp-main-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            text-decoration: none;
+        }
+
+        .whatsapp-main-btn:hover {
+            transform: scale(1.15) rotate(-8deg);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.55);
+        }
+
+        .whatsapp-pulse {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.4);
+            animation: waPulse 2s ease-out infinite;
+        }
+
+        @keyframes waPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .whatsapp-tooltip {
+            background: white;
+            color: #1e293b;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid #f1f5f9;
+        }
+
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .whatsapp-online-dot {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 14px;
+            height: 14px;
+            background: #22c55e;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 page-enter">
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav
+        class="fixed w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center relative">
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-slate-600 dark:text-slate-300">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                <div
+                    class="flex-shrink-0 flex items-center md:static absolute left-1/2 transform -translate-x-1/2 md:translate-x-0">
+                    <a href="/" class="flex items-center hover:scale-105 transition-transform">
+                        <img src="/premium-logo.jpeg" alt="Shaham Abbas Logo" class="h-10 w-auto object-contain">
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="/" class="hover:text-blue-500 transition-colors">Home</a>
+                        <a href="/portfolio"
+                            class="text-blue-500 font-semibold border-b-2 border-blue-500 pb-0.5">Portfolio</a>
+                        <a href="/about" class="hover:text-blue-500 transition-colors">About</a>
+                        <a href="/pricing" class="hover:text-blue-500 transition-colors">Pricing</a>
+                        <a href="/contact"
+                            class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">Hire
+                            Me</a>
+                        <button id="theme-toggle"
+                            class="p-2 w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-yellow-400 transition-all">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </button>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button id="theme-toggle-mobile"
+                            class="p-2 w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-yellow-400">
+                            <i id="theme-icon-mobile" class="fa-solid fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-6 space-y-4">
+            <a href="/" class="block text-lg font-medium">Home</a>
+            <a href="/portfolio" class="block text-lg font-medium text-blue-500">Portfolio</a>
+            <a href="/about" class="block text-lg font-medium">About</a>
+            <a href="/pricing" class="block text-lg font-medium">Pricing</a>
+            <a href="/contact" class="block text-lg font-medium text-blue-500">Hire Me</a>
+        </div>
+    </nav>
+
+    <!-- ===== PORTFOLIO HERO ===== -->
+    <section class="portfolio-hero pt-32 pb-20 px-4">
+        <!-- Animated Particles -->
+        <div class="particle w-2 h-2 top-[20%] left-[10%]" style="animation: meshFloat 12s ease-in-out infinite;"></div>
+        <div class="particle w-3 h-3 top-[60%] left-[80%]" style="animation: meshFloat 15s ease-in-out infinite 2s;">
+        </div>
+        <div class="particle w-1.5 h-1.5 top-[30%] left-[60%]"
+            style="animation: meshFloat 10s ease-in-out infinite 1s;"></div>
+        <div class="particle w-2 h-2 top-[70%] left-[25%]" style="animation: meshFloat 18s ease-in-out infinite 3s;">
+        </div>
+        <div class="particle w-2.5 h-2.5 top-[40%] left-[90%]"
+            style="animation: meshFloat 14s ease-in-out infinite 0.5s;"></div>
+
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <span
+                class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 dark:text-indigo-300 text-sm font-bold uppercase tracking-widest mb-6">
+                <i class="fa-solid fa-briefcase text-xs"></i> My Work
+            </span>
+            <h1 class="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-tight mb-6">
+                Crafted with
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Precision</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
+                A curated collection of real-world projects — from e-commerce platforms to custom web applications —
+                each built with performance, design, and scalability in mind.
+            </p>
+
+            <!-- Stats Bar -->
+            <div
+                class="stats-glass inline-flex flex-wrap items-center justify-center gap-8 md:gap-12 px-8 py-5 mx-auto">
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">50+</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Projects</div>
+                </div>
+                <div class="w-px h-10 bg-slate-200 dark:bg-slate-700"></div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-black text-blue-500">100%</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Satisfaction</div>
+                </div>
+                <div class="w-px h-10 bg-slate-200 dark:bg-slate-700"></div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">5+</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Years</div>
+                </div>
+                <div class="w-px h-10 bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
+                <div class="text-center hidden md:block">
+                    <div class="text-2xl md:text-3xl font-black text-emerald-500">4.9</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FILTER BAR ===== -->
+    <section class="py-8 bg-slate-50 dark:bg-slate-950 sticky top-16 z-40 border-b border-slate-100 dark:border-slate-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-3" id="filter-bar">
+                <button class="filter-pill active" data-filter="all">
+                    <i class="fa-solid fa-grid-2 mr-2 text-xs"></i>All Projects
+                </button>
+                <button class="filter-pill" data-filter="web-app">
+                    <i class="fa-solid fa-globe mr-2 text-xs"></i>Web Apps
+                </button>
+                <button class="filter-pill" data-filter="wordpress">
+                    <i class="fa-brands fa-wordpress mr-2 text-xs"></i>WordPress
+                </button>
+                <button class="filter-pill" data-filter="ui-ux">
+                    <i class="fa-solid fa-palette mr-2 text-xs"></i>UI/UX
+                </button>
+                <button class="filter-pill" data-filter="frontend">
+                    <i class="fa-solid fa-code mr-2 text-xs"></i>Frontend
+                </button>
+                <button class="filter-pill" data-filter="ecommerce">
+                    <i class="fa-solid fa-cart-shopping mr-2 text-xs"></i>E-Commerce
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS GRID ===== -->
+    <section class="py-16 bg-slate-50 dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+
+                <!-- Project 1: NexShop E-Commerce -->
+                <div class="portfolio-card project-item" data-category="web-app ecommerce">
+                    <div class="card-image">
+                        <img src="/incubee.png" alt="NexShop E-Commerce Platform"
+                            onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800'">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="https://incubee.pk" target="_blank" rel="noopener" class="overlay-btn primary"
+                                    title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-blue-500/10 text-blue-400">
+                                <i class="fa-solid fa-globe text-[10px]"></i> Web App
+                            </span>
+                            <span class="text-xs text-slate-500">2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">NexShop E-Commerce</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            A premium shopping experience with real-time inventory, product search, and sleek modern
+                            design.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">WooCommerce</span>
+                            <span class="tech-tag">PHP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: DataPulse Dashboard -->
+                <div class="portfolio-card project-item" data-category="frontend web-app">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-0d1275d0459c?auto=format&fit=crop&q=80&w=800"
+                            alt="DataPulse Analytics Dashboard">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="#" class="overlay-btn primary" title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-emerald-500/10 text-emerald-400">
+                                <i class="fa-solid fa-chart-line text-[10px]"></i> Frontend
+                            </span>
+                            <span class="text-xs text-slate-500">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">DataPulse Dashboard</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            Advanced analytics platform for real-time monitoring, reporting, and data visualization.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: FitQuest Pro -->
+                <div class="portfolio-card project-item" data-category="ui-ux">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800"
+                            alt="FitQuest Pro Fitness App">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="#" class="overlay-btn primary" title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-orange-500/10 text-orange-400">
+                                <i class="fa-solid fa-palette text-[10px]"></i> UI/UX
+                            </span>
+                            <span class="text-xs text-slate-500">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">FitQuest Pro</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            Gamified workout tracking app with health metrics visualization and progress analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: ArchiLite Portfolio -->
+                <div class="portfolio-card project-item" data-category="wordpress">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&q=80&w=800"
+                            alt="ArchiLite Architecture Portfolio">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="#" class="overlay-btn primary" title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-purple-500/10 text-purple-400">
+                                <i class="fa-brands fa-wordpress text-[10px]"></i> WordPress
+                            </span>
+                            <span class="text-xs text-slate-500">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">ArchiLite Portfolio</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            A minimalist and elegant showcase website for architectural firms and designers.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">Elementor</span>
+                            <span class="tech-tag">CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: SwiftBank Solution -->
+                <div class="portfolio-card project-item" data-category="frontend web-app">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
+                            alt="SwiftBank Digital Banking">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="#" class="overlay-btn primary" title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-sky-500/10 text-sky-400">
+                                <i class="fa-solid fa-code text-[10px]"></i> Frontend
+                            </span>
+                            <span class="text-xs text-slate-500">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">SwiftBank Solution</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            Secure and lightning-fast digital banking platform with modern financial tools.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Stellex AI Generator -->
+                <div class="portfolio-card project-item" data-category="web-app">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"
+                            alt="Stellex AI Art Generator">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="#" class="overlay-btn primary" title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-rose-500/10 text-rose-400">
+                                <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i> Web App
+                            </span>
+                            <span class="text-xs text-slate-500">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Stellex AI Generator</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            Futuristic AI art generation tool with advanced creative controls and exports.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: Placeholder for future -->
+                <div class="portfolio-card project-item" data-category="ecommerce wordpress">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                            alt="E-Commerce Store">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="#" class="overlay-btn primary" title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-amber-500/10 text-amber-400">
+                                <i class="fa-solid fa-cart-shopping text-[10px]"></i> E-Commerce
+                            </span>
+                            <span class="text-xs text-slate-500">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Luxe Fashion Store</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            High-end fashion e-commerce with multi-currency support and advanced product filters.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">WooCommerce</span>
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: Placeholder for future -->
+                <div class="portfolio-card project-item" data-category="ui-ux frontend">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800"
+                            alt="Mobile App Design">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="#" class="overlay-btn primary" title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-pink-500/10 text-pink-400">
+                                <i class="fa-solid fa-mobile-screen text-[10px]"></i> UI/UX
+                            </span>
+                            <span class="text-xs text-slate-500">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">HealthPulse App</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            Health and wellness tracking app with appointment scheduling and doctor consultations.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9: Placeholder for future -->
+                <div class="portfolio-card project-item" data-category="wordpress ecommerce">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800"
+                            alt="Restaurant Website">
+                        <div class="card-overlay">
+                            <div class="card-overlay-actions">
+                                <a href="#" class="overlay-btn primary" title="Live Preview">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="#" class="overlay-btn secondary" title="View Details">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="category-badge bg-green-500/10 text-green-400">
+                                <i class="fa-brands fa-wordpress text-[10px]"></i> WordPress
+                            </span>
+                            <span class="text-xs text-slate-500">2024</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Spice Route Restaurant</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                            Restaurant website with online ordering, table reservations, and menu management system.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">Elementor</span>
+                            <span class="tech-tag">WooCommerce</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CASE STUDIES ===== -->
+    <section class="py-20 bg-white dark:bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block px-4 py-1.5 border border-indigo-200 dark:border-indigo-900 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest rounded-full mb-4 bg-indigo-50 dark:bg-indigo-900/10">Featured
+                    Work</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight">
+                    Case <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">Studies</span>
+                </h2>
+                <p class="mt-4 text-slate-500 dark:text-slate-400 max-w-xl mx-auto">An in-depth look at select projects
+                    where I tackled complex challenges and delivered exceptional results.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Case Study 1 -->
+                <div class="case-study-card flex flex-col md:flex-row">
+                    <div class="md:w-2/5">
+                        <img src="/incubee.png" alt="NexShop Case Study"
+                            class="w-full h-64 md:h-full object-cover"
+                            onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800'">
+                    </div>
+                    <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                        <span
+                            class="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
+                            <i class="fa-solid fa-star text-[10px]"></i> Featured
+                        </span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-3">NexShop
+                            E-Commerce Platform</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                            Built a complete e-commerce platform with real-time inventory management, secure payment
+                            processing, and a premium UX. The client's sales increased by 40% within the first month of
+                            launch.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i class="fa-solid fa-clock text-blue-400"></i> 6 Weeks
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i class="fa-solid fa-chart-line text-emerald-400"></i> +40% Sales
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i class="fa-solid fa-star text-amber-400"></i> 5.0 Client Rating
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">WooCommerce</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-study-card flex flex-col md:flex-row-reverse">
+                    <div class="md:w-2/5">
+                        <img src="https://images.unsplash.com/photo-1551288049-0d1275d0459c?auto=format&fit=crop&q=80&w=800"
+                            alt="DataPulse Case Study" class="w-full h-64 md:h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                        <span
+                            class="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
+                            <i class="fa-solid fa-star text-[10px]"></i> Featured
+                        </span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-3">DataPulse
+                            Analytics Dashboard</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                            Designed and built a comprehensive analytics dashboard with real-time data visualization,
+                            custom reporting modules, and an intuitive interface that reduced data analysis time by 60%
+                            for the client's team.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i class="fa-solid fa-clock text-blue-400"></i> 8 Weeks
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i class="fa-solid fa-bolt text-amber-400"></i> -60% Analysis Time
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i class="fa-solid fa-star text-amber-400"></i> 5.0 Rating
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WORK WITH ME CTA ===== -->
+    <section class="cta-gradient py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                Ready to bring your <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">vision</span> to
+                life?
+            </h2>
+            <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
+                Whether you need a stunning website, a powerful e-commerce store, or a custom web application — I'm here
+                to make it happen.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/contact"
+                    class="px-8 py-4 bg-white text-slate-900 rounded-xl font-bold hover:scale-105 transition-transform shadow-xl text-center">
+                    <i class="fa-solid fa-paper-plane mr-2"></i>Start a Project
+                </a>
+                <a href="https://www.upwork.com/freelancers/~0193ace3dec77885d6?mp_source=share" target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-8 py-4 border border-white/20 text-white rounded-xl font-bold hover:bg-white/10 transition-all text-center">
+                    <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i>Hire on Upwork
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="footer" class="bg-slate-950 text-slate-300 pt-20 pb-0 relative overflow-hidden">
+        <div
+            class="absolute top-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl pointer-events-none translate-x-1/2 translate-y-1/2">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-slate-800">
+                <div class="lg:col-span-1">
+                    <a href="/" class="inline-block hover:scale-105 transition-transform">
+                        <img src="/premium-logo.jpeg" alt="Logo" class="h-12 w-auto object-contain mb-2">
+                    </a>
+                    <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+                        Full-stack developer crafting high-performance websites, e-commerce stores, and modern web
+                        applications that drive real business results.
+                    </p>
+                    <div class="flex items-center gap-3 mt-6">
+                        <a href="https://github.com/Shahamoffical" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300 hover:-translate-y-1">
+                            <i class="fa-brands fa-github text-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shaham-abbas" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300 hover:-translate-y-1">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1C6uvVw8ha/" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300 hover:-translate-y-1">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="https://www.instagram.com/ishahamabbas" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-pink-500 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300 hover:-translate-y-1">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-widest mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Home</a>
+                        </li>
+                        <li><a href="/portfolio"
+                                class="text-blue-400 font-semibold flex items-center gap-2 group"><span
+                                    class="w-4 h-px bg-blue-400"></span>Portfolio</a></li>
+                        <li><a href="/about"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>About</a>
+                        </li>
+                        <li><a href="/pricing"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Pricing</a>
+                        </li>
+                        <li><a href="/contact"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-widest mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/#services"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Frontend
+                                Development</a></li>
+                        <li><a href="/#services"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>Backend
+                                Development</a></li>
+                        <li><a href="/#services"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>WordPress
+                                & WooCommerce</a></li>
+                        <li><a href="/#services"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>UI/UX
+                                Design</a></li>
+                        <li><a href="/#services"
+                                class="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 group"><span
+                                    class="w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-4"></span>SEO
+                                & Performance</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-widest mb-2">Get In Touch</h4>
+                    <p class="text-slate-400 text-sm mb-5 leading-relaxed">Have a project in mind? Let's make it
+                        happen.</p>
+                    <div class="space-y-3">
+                        <a href="mailto:ishahamabbas@gmail.com"
+                            class="flex items-center gap-3 text-slate-400 hover:text-white text-sm transition-colors group">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-blue-600 flex items-center justify-center transition-colors flex-shrink-0">
+                                <i class="fa-solid fa-envelope text-xs"></i>
+                            </span>
+                            ishahamabbas@gmail.com
+                        </a>
+                        <a href="https://wa.me/923480648016" target="_blank" rel="noopener"
+                            class="flex items-center gap-3 text-slate-400 hover:text-white text-sm transition-colors group">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-emerald-600 flex items-center justify-center transition-colors flex-shrink-0">
+                                <i class="fa-brands fa-whatsapp text-xs"></i>
+                            </span>
+                            WhatsApp Chat
+                        </a>
+                        <a href="https://www.upwork.com/freelancers/~0193ace3dec77885d6?mp_source=share" target="_blank"
+                            rel="noopener"
+                            class="flex items-center gap-3 text-slate-400 hover:text-white text-sm transition-colors group">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-emerald-600 flex items-center justify-center transition-colors flex-shrink-0">
+                                <i class="fa-solid fa-briefcase text-xs"></i>
+                            </span>
+                            Hire on Upwork
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-slate-500 text-sm">
+                    &copy; <span id="footer-year"></span> <span class="text-slate-400 font-semibold">Shaham
+                        Abbas</span>. All rights reserved. Built with <span class="text-red-400">♥</span>
+                </p>
+                <div class="flex items-center gap-6 text-sm">
+                    <a href="/privacy-policy.html" class="text-slate-400 hover:text-blue-400 transition-colors">Privacy
+                        Policy</a>
+                    <span class="text-slate-700">|</span>
+                    <a href="/terms.html" class="text-slate-400 hover:text-blue-400 transition-colors">Terms</a>
+                    <span class="text-slate-700">|</span>
+                    <a href="/contact" class="text-slate-400 hover:text-blue-400 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent opacity-20"></div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-btn">
+        <span class="whatsapp-tooltip">💬 Chat on WhatsApp</span>
+        <a href="https://wa.me/923480648016?text=Hi%20Shaham!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
+            target="_blank" rel="noopener noreferrer" class="whatsapp-main-btn" aria-label="Chat on WhatsApp">
+            <span class="whatsapp-pulse"></span>
+            <span class="whatsapp-online-dot"></span>
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+    <script src="/app.js"></script>
+
+    <!-- Portfolio Page Specific Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gsapAvailable = typeof gsap !== 'undefined';
+            const scrollTriggerAvailable = typeof ScrollTrigger !== 'undefined';
+
+            if (gsapAvailable && scrollTriggerAvailable) {
+                gsap.registerPlugin(ScrollTrigger);
+            }
+
+            // ===== MENU TOGGLE =====
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                mobileMenu.querySelectorAll('a').forEach(link =>
+                    link.addEventListener('click', () => mobileMenu.classList.add('hidden'))
+                );
+            }
+
+            // ===== THEME TOGGLE =====
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            const themeIcon = document.getElementById('theme-icon');
+            const themeIconMobile = document.getElementById('theme-icon-mobile');
+
+            function updateThemeIcons(isDark) {
+                [themeIcon, themeIconMobile].forEach(icon => {
+                    if (icon) {
+                        icon.classList.remove('fa-moon', 'fa-sun');
+                        icon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
+                    }
+                });
+            }
+
+            function toggleDarkMode() {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeIcons(isDark);
+            }
+
+            const savedTheme = localStorage.getItem('theme');
+            const isDark = savedTheme === 'dark' || !savedTheme;
+            if (isDark) document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
+            updateThemeIcons(isDark);
+
+            if (themeToggle) themeToggle.addEventListener('click', toggleDarkMode);
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleDarkMode);
+
+            // ===== FILTER FUNCTIONALITY =====
+            const filterBtns = document.querySelectorAll('.filter-pill');
+            const projectItems = document.querySelectorAll('.project-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    if (gsapAvailable) {
+                        gsap.to(projectItems, {
+                            duration: 0.25,
+                            opacity: 0,
+                            scale: 0.92,
+                            ease: "power2.in",
+                            onComplete: () => {
+                                projectItems.forEach(card => {
+                                    const categories = card.getAttribute('data-category');
+                                    if (filter === 'all' || categories.includes(filter)) {
+                                        card.style.display = 'block';
+                                        gsap.to(card, {
+                                            duration: 0.5,
+                                            opacity: 1,
+                                            scale: 1,
+                                            ease: "back.out(1.4)",
+                                            delay: 0.05
+                                        });
+                                    } else {
+                                        card.style.display = 'none';
+                                    }
+                                });
+                                if (scrollTriggerAvailable) ScrollTrigger.refresh();
+                            }
+                        });
+                    } else {
+                        projectItems.forEach(card => {
+                            const categories = card.getAttribute('data-category');
+                            card.style.display = (filter === 'all' || categories.includes(filter)) ? 'block' : 'none';
+                        });
+                    }
+                });
+            });
+
+            // ===== GSAP CARD ENTRANCE ANIMATIONS =====
+            if (gsapAvailable) {
+                document.querySelectorAll('.portfolio-card').forEach((card, i) => {
+                    gsap.from(card, {
+                        y: 60,
+                        opacity: 0,
+                        duration: 0.8,
+                        delay: i * 0.08,
+                        ease: "power3.out",
+                        scrollTrigger: scrollTriggerAvailable ? {
+                            trigger: card,
+                            start: "top 92%",
+                            toggleActions: "play none none none"
+                        } : null
+                    });
+                });
+
+                document.querySelectorAll('.case-study-card').forEach((card, i) => {
+                    gsap.from(card, {
+                        y: 50,
+                        opacity: 0,
+                        duration: 1,
+                        delay: i * 0.15,
+                        ease: "power3.out",
+                        scrollTrigger: scrollTriggerAvailable ? {
+                            trigger: card,
+                            start: "top 88%",
+                            toggleActions: "play none none none"
+                        } : null
+                    });
+                });
+            }
+
+            // ===== NAV SHADOW ON SCROLL =====
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (nav) {
+                    window.scrollY > 50 ? nav.classList.add('shadow-lg') : nav.classList.remove('shadow-lg');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

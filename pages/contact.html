@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Shaham Abbas — Let's Build Something Amazing</title>
+    <meta name="description" content="Get in touch with Shaham Abbas for web development projects, freelance work, or any inquiries. Available for WordPress, React, Node.js, and full-stack projects.">
+    <meta name="author" content="Shaham Abbas">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://shahamabbas.online/contact">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shahamabbas.online/contact">
+    <meta property="og:title" content="Contact | Shaham Abbas">
+    <meta property="og:image" content="https://shahamabbas.online/untitled-design.png">
+    <meta name="theme-color" content="#3b82f6">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/public/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .page-enter { animation: pageEnter 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+        @keyframes pageEnter { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .contact-hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+        }
+        .contact-hero::before {
+            content: '';
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 60% 40%, rgba(59,130,246,0.12) 0%, transparent 50%), radial-gradient(ellipse at 30% 70%, rgba(168,85,247,0.1) 0%, transparent 40%);
+            animation: meshFloat 20s ease-in-out infinite;
+        }
+        @keyframes meshFloat { 0%,100%{transform:translate(0,0) rotate(0deg);} 33%{transform:translate(2%,-2%) rotate(1deg);} 66%{transform:translate(-1%,1%) rotate(-0.5deg);} }
+        html:not(.dark) .contact-hero { background: linear-gradient(135deg, #eff6ff, #e0e7ff, #f8fafc); }
+
+        .contact-card { background: rgba(255,255,255,0.04); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; transition: all 0.4s ease; }
+        .contact-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(59,130,246,0.15); }
+        html:not(.dark) .contact-card { background: white; border-color: #e2e8f0; }
+
+        .input-field { width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 14px; color: white; font-size: 15px; transition: all 0.3s ease; outline: none; }
+        .input-field::placeholder { color: #64748b; }
+        .input-field:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+        html:not(.dark) .input-field { background: #f8fafc; border-color: #e2e8f0; color: #0f172a; }
+        html:not(.dark) .input-field:focus { border-color: #3b82f6; }
+
+        .map-container { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+        html:not(.dark) .map-container { border-color: #e2e8f0; }
+
+        /* WhatsApp */
+        .whatsapp-btn { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+        .whatsapp-main-btn { width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; box-shadow: 0 8px 25px rgba(37,211,102,0.45); transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); border: none; text-decoration: none; }
+        .whatsapp-main-btn:hover { transform: scale(1.15) rotate(-8deg); }
+        .whatsapp-pulse { position: absolute; width: 60px; height: 60px; border-radius: 50%; background: rgba(37,211,102,0.4); animation: waPulse 2s ease-out infinite; }
+        @keyframes waPulse { 0%{transform:scale(1);opacity:0.8;} 100%{transform:scale(1.8);opacity:0;} }
+        .whatsapp-tooltip { background: white; color: #1e293b; padding: 10px 16px; border-radius: 12px; font-size: 13px; font-weight: 600; box-shadow: 0 8px 25px rgba(0,0,0,0.12); white-space: nowrap; opacity: 0; transform: translateX(10px); transition: all 0.3s ease; pointer-events: none; }
+        .whatsapp-btn:hover .whatsapp-tooltip { opacity: 1; transform: translateX(0); }
+        .whatsapp-online-dot { position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; background: #22c55e; border-radius: 50%; border: 2px solid white; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 page-enter">
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center relative">
+                <div class="md:hidden flex items-center"><button id="menu-btn" class="text-slate-600 dark:text-slate-300"><i class="fa-solid fa-bars text-2xl"></i></button></div>
+                <div class="flex-shrink-0 flex items-center md:static absolute left-1/2 transform -translate-x-1/2 md:translate-x-0">
+                    <a href="/" class="flex items-center hover:scale-105 transition-transform"><img src="/premium-logo.jpeg" alt="Logo" class="h-10 w-auto object-contain"></a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="/" class="hover:text-blue-500 transition-colors">Home</a>
+                        <a href="/portfolio" class="hover:text-blue-500 transition-colors">Portfolio</a>
+                        <a href="/about" class="hover:text-blue-500 transition-colors">About</a>
+                        <a href="/pricing" class="hover:text-blue-500 transition-colors">Pricing</a>
+                        <a href="/contact" class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all font-semibold">Hire Me</a>
+                        <button id="theme-toggle" class="p-2 w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-yellow-400 transition-all"><i id="theme-icon" class="fa-solid fa-moon"></i></button>
+                    </div>
+                    <div class="md:hidden flex items-center"><button id="theme-toggle-mobile" class="p-2 w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-yellow-400"><i id="theme-icon-mobile" class="fa-solid fa-moon"></i></button></div>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-6 space-y-4">
+            <a href="/" class="block text-lg font-medium">Home</a>
+            <a href="/portfolio" class="block text-lg font-medium">Portfolio</a>
+            <a href="/about" class="block text-lg font-medium">About</a>
+            <a href="/pricing" class="block text-lg font-medium">Pricing</a>
+            <a href="/contact" class="block text-lg font-medium text-blue-500">Hire Me</a>
+        </div>
+    </nav>
+
+    <!-- CONTACT HERO -->
+    <section class="contact-hero pt-32 pb-10 px-4">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 dark:text-cyan-300 text-sm font-bold uppercase tracking-widest mb-6">
+                <i class="fa-solid fa-paper-plane text-xs"></i> Get In Touch
+            </span>
+            <h1 class="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-tight mb-6">
+                Let's build something
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">amazing</span>
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                Have a project in mind? I'd love to hear about it. Send me a message and I'll get back to you within 24 hours.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT CONTENT -->
+    <section class="py-16 bg-slate-50 dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+
+                <!-- Contact Info Sidebar -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Email Card -->
+                    <div class="contact-card p-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 text-xl flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Email Me</h3>
+                                <a href="mailto:ishahamabbas@gmail.com" class="text-blue-500 text-sm font-medium hover:underline">ishahamabbas@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Card -->
+                    <div class="contact-card p-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-xl flex-shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white mb-1">WhatsApp</h3>
+                                <a href="https://wa.me/923480648016?text=Hi%20Shaham!%20I%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project." target="_blank" class="text-emerald-500 text-sm font-medium hover:underline">+92 348 0648016</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="contact-card p-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-500 text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Location</h3>
+                                <p class="text-slate-500 text-sm">Bahawalpur, Punjab, Pakistan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upwork Card -->
+                    <div class="contact-card p-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-600 text-xl flex-shrink-0">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Upwork</h3>
+                                <a href="https://www.upwork.com/freelancers/~0193ace3dec77885d6?mp_source=share" target="_blank" class="text-green-600 text-sm font-medium hover:underline">Hire me on Upwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="contact-card p-6">
+                        <h3 class="font-bold text-slate-900 dark:text-white mb-4">Follow Me</h3>
+                        <div class="flex items-center gap-3">
+                            <a href="https://github.com/Shahamoffical" target="_blank" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white flex items-center justify-center text-slate-600 dark:text-slate-400 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-github text-lg"></i></a>
+                            <a href="https://www.linkedin.com/in/shaham-abbas" target="_blank" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white flex items-center justify-center text-slate-600 dark:text-slate-400 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                            <a href="https://www.facebook.com/share/1C6uvVw8ha/" target="_blank" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white flex items-center justify-center text-slate-600 dark:text-slate-400 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+                            <a href="https://www.instagram.com/ishahamabbas" target="_blank" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white flex items-center justify-center text-slate-600 dark:text-slate-400 transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-instagram text-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-3">
+                    <div class="bg-white dark:bg-slate-800/50 rounded-3xl p-8 md:p-10 border border-slate-200 dark:border-slate-700 shadow-xl">
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Send a Message</h2>
+                        <p class="text-slate-500 text-sm mb-8">Fill out the form below and I'll get back to you within 24 hours.</p>
+
+                        <form id="contact-form" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="cf-name" class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Your Name</label>
+                                    <input id="cf-name" name="name" type="text" required placeholder="John Doe" class="input-field">
+                                </div>
+                                <div>
+                                    <label for="cf-email" class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Email Address</label>
+                                    <input id="cf-email" name="email" type="email" required placeholder="john@example.com" class="input-field">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="cf-subject" class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Subject</label>
+                                <input id="cf-subject" name="subject" type="text" required placeholder="Project Inquiry" class="input-field">
+                            </div>
+                            <div>
+                                <label for="cf-message" class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Message</label>
+                                <textarea id="cf-message" name="message" rows="5" required placeholder="Tell me about your project..." class="input-field" style="resize: vertical;"></textarea>
+                            </div>
+                            <button type="submit" id="cf-submit" class="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold hover:from-blue-500 hover:to-indigo-500 transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
+                                <span id="cf-btn-text">Send Message</span>
+                                <i id="cf-btn-icon" class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="map-container mt-8">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110279.69063832!2d71.60773!3d29.3956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b90c10cb0fe3d%3A0x93e9d547e6a4a2e4!2sBahawalpur%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" class="rounded-3xl"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-10 right-10 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-xl z-[60]">Message sent successfully!</div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-300 pt-16 pb-0 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-slate-800">
+                <div>
+                    <a href="/"><img src="/premium-logo.jpeg" alt="Logo" class="h-12 w-auto object-contain mb-2"></a>
+                    <p class="mt-4 text-slate-400 text-sm leading-relaxed">Full-stack developer crafting high-performance websites and modern web apps.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-widest mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="text-slate-400 hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="/portfolio" class="text-slate-400 hover:text-blue-400 transition-colors">Portfolio</a></li>
+                        <li><a href="/about" class="text-slate-400 hover:text-blue-400 transition-colors">About</a></li>
+                        <li><a href="/pricing" class="text-slate-400 hover:text-blue-400 transition-colors">Pricing</a></li>
+                        <li><a href="/contact" class="text-blue-400 font-semibold">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-widest mb-6">Get In Touch</h4>
+                    <div class="space-y-3">
+                        <a href="mailto:ishahamabbas@gmail.com" class="flex items-center gap-3 text-slate-400 hover:text-white text-sm transition-colors"><i class="fa-solid fa-envelope"></i> ishahamabbas@gmail.com</a>
+                        <a href="https://wa.me/923480648016" target="_blank" class="flex items-center gap-3 text-slate-400 hover:text-white text-sm transition-colors"><i class="fa-brands fa-whatsapp"></i> WhatsApp Chat</a>
+                    </div>
+                </div>
+            </div>
+            <div class="py-6 text-center text-slate-500 text-sm">&copy; <span id="footer-year"></span> Shaham Abbas. All rights reserved.</div>
+        </div>
+        <div class="h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent opacity-20"></div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <div class="whatsapp-btn">
+        <span class="whatsapp-tooltip">💬 Chat on WhatsApp</span>
+        <a href="https://wa.me/923480648016?text=Hi%20Shaham!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="whatsapp-main-btn" aria-label="Chat on WhatsApp">
+            <span class="whatsapp-pulse"></span><span class="whatsapp-online-dot"></span><i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+    <script src="/app.js"></script>
+</body>
+</html>

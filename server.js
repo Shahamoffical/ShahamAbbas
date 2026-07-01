@@ -122,9 +122,33 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
+// =============================================
+// PAGE ROUTES
+// =============================================
+
 // Main route - serve index.html
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Portfolio page
+app.get('/portfolio', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'portfolio.html'));
+});
+
+// About page
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'about.html'));
+});
+
+// Pricing page
+app.get('/pricing', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'pricing.html'));
+});
+
+// Contact page
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'contact.html'));
 });
 
 // Start the server (Only in local environment, Vercel will use the exported app)

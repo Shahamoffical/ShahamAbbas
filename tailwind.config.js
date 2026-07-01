@@ -4,6 +4,7 @@ module.exports = {
   content: [
     './index.html',
     './pricing-section.html',
+    './pages/**/*.html',
     './app.js',
     './src/**/*.{html,js}',
     './*.{html,js}'
