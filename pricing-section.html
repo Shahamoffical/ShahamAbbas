@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
+
+        /* ── TOGGLE ── */
+        .toggle-track {
+            width: 52px; height: 28px;
+            background: #e2e8f0;
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .toggle-track.on { background: #3b82f6; }
+        .toggle-thumb {
+            width: 20px; height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px; left: 4px;
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .toggle-track.on .toggle-thumb { transform: translateX(24px); }
+
+        /* ── PRICING CARDS ── */
+        .pricing-card {
+            background: white;
+            border-radius: 28px;
+            border: 1.5px solid #e9eef5;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                        box-shadow 0.35s ease,
+                        border-color 0.3s ease;
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(59,130,246,0.04) 0%, rgba(139,92,246,0.04) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px -12px rgba(59,130,246,0.18);
+            border-color: #3b82f6;
+        }
+        .pricing-card:hover::before { opacity: 1; }
+
+        /* Popular card */
+        .pricing-card.popular {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border-color: transparent;
+            box-shadow: 0 20px 50px -10px rgba(59,130,246,0.35);
+        }
+        .pricing-card.popular:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 70px -12px rgba(59,130,246,0.45);
+            border-color: transparent;
+        }
+        .pricing-card.popular::before {
+            background: linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(139,92,246,0.08) 100%);
+            opacity: 1;
+        }
+
+        /* Popular badge */
+        .popular-badge {
+            position: absolute;
+            top: 24px; right: 24px;
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 100px;
+            box-shadow: 0 4px 14px rgba(59,130,246,0.4);
+        }
+
+        /* Icon containers */
+        .plan-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        /* Feature list */
+        .feature-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            font-size: 14px; font-weight: 500;
+            color: #475569;
+        }
+        .feature-item:last-child { border-bottom: none; }
+        .popular .feature-item { color: #94a3b8; border-bottom-color: rgba(255,255,255,0.06); }
+
+        .feature-check {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: #eff6ff;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            color: #3b82f6;
+            font-size: 10px;
+        }
+        .popular .feature-check { background: rgba(59,130,246,0.2); color: #60a5fa; }
+
+        /* Price number */
+        .price-amount {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1;
+            color: #0f172a;
+            letter-spacing: -2px;
+            transition: all 0.4s ease;
+        }
+        .popular .price-amount { color: white; }
+
+        .price-period { font-size: 14px; font-weight: 600; color: #94a3b8; margin-top: 4px; }
+        .popular .price-period { color: #64748b; }
+
+        /* Upwork CTA Button */
+        .upwork-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .upwork-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.12);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .upwork-btn:hover::after { opacity: 1; }
+        .upwork-btn:hover { transform: scale(1.02); }
+        .upwork-btn:active { transform: scale(0.98); }
+
+        .upwork-btn.primary {
+            background: linear-gradient(135deg, #14a800 0%, #0d8200 100%);
+            color: white;
+            box-shadow: 0 8px 24px rgba(20,168,0,0.35);
+        }
+        .upwork-btn.primary:hover { box-shadow: 0 12px 32px rgba(20,168,0,0.45); }
+
+        .upwork-btn.secondary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            box-shadow: 0 8px 24px rgba(59,130,246,0.35);
+        }
+        .upwork-btn.secondary:hover { box-shadow: 0 12px 32px rgba(59,130,246,0.48); }
+
+        .upwork-btn.outline {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            box-shadow: none;
+        }
+        .upwork-btn.outline:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: none;
+        }
+
+        /* Upwork logo SVG */
+        .upwork-logo { width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* Savings badge */
+        .savings-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: #dcfce7; color: #16a34a;
+            font-size: 11px; font-weight: 700;
+            padding: 3px 10px; border-radius: 100px;
+            margin-left: 8px;
+        }
+        .popular .savings-badge { background: rgba(20,168,0,0.2); color: #4ade80; }
+
+        /* Price hidden for animation */
+        .price-yearly { display: none; }
+        .price-monthly { display: block; }
+
+        /* Decorative background blob */
+        .blob-bg {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            opacity: 0.06;
+        }
+
+        /* Guarantee strip */
+        .guarantee-strip {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 100px;
+            font-size: 13px; font-weight: 600; color: #64748b;
+            width: fit-content;
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        /* Plan divider */
+        .plan-divider { height: 1px; background: #f1f5f9; margin: 1.5rem 0; }
+        .popular .plan-divider { background: rgba(255,255,255,0.08); }
+    </style>
+</head>
+<body>
+
+<!-- ====================== PRICING SECTION ====================== -->
+<section class="py-24 relative overflow-hidden">
+
+    <!-- Decorative blobs -->
+    <div class="blob-bg w-96 h-96 bg-blue-400" style="top:-80px;left:-60px;"></div>
+    <div class="blob-bg w-80 h-80 bg-purple-400" style="bottom:-40px;right:-40px;"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+
+        <!-- ── HEADER ── -->
+        <div class="text-center mb-14">
+            <span class="inline-block px-4 py-1.5 bg-blue-50 border border-blue-100 text-blue-600 text-[11px] font-extrabold uppercase tracking-[0.18em] rounded-full mb-5">
+                Pricing Plans
+            </span>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-4">
+                Transparent Pricing,<br>
+                <span style="background:linear-gradient(90deg,#3b82f6,#6366f1);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+                    Zero Surprises
+                </span>
+            </h2>
+            <p class="text-slate-500 text-base max-w-md mx-auto mb-8">
+                Choose the plan that fits your project. All plans include revision rounds and post-launch support.
+            </p>
+
+            <!-- Monthly / Yearly Toggle -->
+            <div class="flex items-center justify-center gap-3 mb-2">
+                <span id="label-monthly" class="text-sm font-700 text-slate-900 font-bold">Monthly</span>
+                <div class="toggle-track" id="billing-toggle" onclick="toggleBilling()">
+                    <div class="toggle-thumb"></div>
+                </div>
+                <span id="label-yearly" class="text-sm text-slate-400 font-semibold">
+                    Yearly
+                    <span class="savings-badge ml-1"><i class="fa-solid fa-tag text-[9px]"></i> Save 20%</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- ── CARDS GRID ── -->
+        <div class="grid md:grid-cols-3 gap-6 items-start">
+
+            <!-- CARD 1: WordPress Starter -->
+            <div class="pricing-card">
+                <div class="plan-icon bg-sky-50">
+                    <i class="fa-brands fa-wordpress text-sky-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-1">WordPress Starter</h3>
+                <p class="text-slate-400 text-sm mb-5">Perfect for small businesses & personal brands.</p>
+
+                <div class="plan-divider"></div>
+
+                <!-- Price -->
+                <div class="flex items-end gap-2 my-5">
+                    <div>
+                        <div class="flex items-start gap-1">
+                            <span class="text-2xl font-bold text-slate-400 mt-3">$</span>
+                            <span class="price-amount price-monthly" data-monthly="75" data-yearly="60">75</span>
+                        </div>
+                        <p class="price-period">/ project <span id="billing-note-1" class="text-xs text-slate-400 font-normal"></span></p>
+                    </div>
+                </div>
+
+                <div class="plan-divider"></div>
+
+                <!-- Features -->
+                <div class="my-5 space-y-1">
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>1-Page Website with Elementor</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Mobile Responsive Design</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Theme Customization</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Contact Form Setup</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>2 Revision Rounds</div>
+                    <div class="feature-item text-slate-300"><div class="feature-check opacity-40"><i class="fa-solid fa-minus"></i></div>SEO Optimization</div>
+                    <div class="feature-item text-slate-300"><div class="feature-check opacity-40"><i class="fa-solid fa-minus"></i></div>WooCommerce Integration</div>
+                </div>
+
+                <a href="https://www.upwork.com/freelancers/~0193ace3dec77885d6?mp_source=share"
+                   target="_blank" rel="noopener noreferrer"
+                   class="upwork-btn primary mt-2">
+                    <svg class="upwork-logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30.2 24.6c-2.3 0-4.4-1-5.9-2.6l-4.3 9.5H16l4.6-10.2c-.6-1.3-1-2.8-1-4.3 0-5.4 4.1-9.7 9.5-9.7 2.6 0 5 1 6.8 2.8C37.7 12 38.8 14.5 38.8 17.2c.1 4.1-3.7 7.4-8.6 7.4zm0-14.2c-3.7 0-6.7 3-6.7 6.7 0 3.7 3 6.7 6.7 6.7 3.7 0 6.7-3 6.7-6.7 0-3.7-3-6.7-6.7-6.7zM12.3 7.4l-3 9.3-3-9.3H1.2L6.6 24h5.3l5.4-16.6h-5z" fill="white"/>
+                    </svg>
+                    Hire on Upwork
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <!-- CARD 2: Full-Stack Pro (POPULAR) -->
+            <div class="pricing-card popular" style="margin-top:-12px;">
+                <div class="popular-badge">⚡ Most Popular</div>
+
+                <div class="plan-icon" style="background:rgba(59,130,246,0.15);">
+                    <i class="fa-solid fa-layer-group" style="color:#60a5fa;"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-1">Full-Stack Pro</h3>
+                <p class="text-slate-400 text-sm mb-5">For businesses that need a complete web solution.</p>
+
+                <div class="plan-divider"></div>
+
+                <!-- Price -->
+                <div class="flex items-end gap-2 my-5">
+                    <div>
+                        <div class="flex items-start gap-1">
+                            <span class="text-2xl font-bold text-slate-400 mt-3">$</span>
+                            <span class="price-amount price-monthly" data-monthly="250" data-yearly="200">250</span>
+                        </div>
+                        <p class="price-period">/ project</p>
+                    </div>
+                </div>
+
+                <div class="plan-divider"></div>
+
+                <!-- Features -->
+                <div class="my-5 space-y-1">
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Up to 5-Page Website</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Custom Design & Animations</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>WooCommerce / E-commerce</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>SEO Optimization</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Payment Gateway Integration</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>5 Revision Rounds</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>30-Day Post-Launch Support</div>
+                </div>
+
+                <a href="https://www.upwork.com/freelancers/~0193ace3dec77885d6?mp_source=share"
+                   target="_blank" rel="noopener noreferrer"
+                   class="upwork-btn outline mt-2">
+                    <svg class="upwork-logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30.2 24.6c-2.3 0-4.4-1-5.9-2.6l-4.3 9.5H16l4.6-10.2c-.6-1.3-1-2.8-1-4.3 0-5.4 4.1-9.7 9.5-9.7 2.6 0 5 1 6.8 2.8C37.7 12 38.8 14.5 38.8 17.2c.1 4.1-3.7 7.4-8.6 7.4zm0-14.2c-3.7 0-6.7 3-6.7 6.7 0 3.7 3 6.7 6.7 6.7 3.7 0 6.7-3 6.7-6.7 0-3.7-3-6.7-6.7-6.7zM12.3 7.4l-3 9.3-3-9.3H1.2L6.6 24h5.3l5.4-16.6h-5z" fill="white"/>
+                    </svg>
+                    Hire on Upwork
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <!-- CARD 3: Multivendor Marketplace -->
+            <div class="pricing-card">
+                <div class="plan-icon bg-purple-50">
+                    <i class="fa-solid fa-store text-purple-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-1">Multivendor Market</h3>
+                <p class="text-slate-400 text-sm mb-5">Complete marketplace with Dokan or WC Vendors.</p>
+
+                <div class="plan-divider"></div>
+
+                <!-- Price -->
+                <div class="flex items-end gap-2 my-5">
+                    <div>
+                        <div class="flex items-start gap-1">
+                            <span class="text-2xl font-bold text-slate-400 mt-3">$</span>
+                            <span class="price-amount price-monthly" data-monthly="450" data-yearly="360">450</span>
+                        </div>
+                        <p class="price-period">/ project</p>
+                    </div>
+                </div>
+
+                <div class="plan-divider"></div>
+
+                <!-- Features -->
+                <div class="my-5 space-y-1">
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Full Multivendor Setup</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Dokan / WC Vendors Config</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Custom Vendor Dashboard</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Payment Splits & Commissions</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Advanced SEO Setup</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>Unlimited Revisions</div>
+                    <div class="feature-item"><div class="feature-check"><i class="fa-solid fa-check"></i></div>60-Day Priority Support</div>
+                </div>
+
+                <a href="https://www.upwork.com/freelancers/~0193ace3dec77885d6?mp_source=share"
+                   target="_blank" rel="noopener noreferrer"
+                   class="upwork-btn secondary mt-2">
+                    <svg class="upwork-logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30.2 24.6c-2.3 0-4.4-1-5.9-2.6l-4.3 9.5H16l4.6-10.2c-.6-1.3-1-2.8-1-4.3 0-5.4 4.1-9.7 9.5-9.7 2.6 0 5 1 6.8 2.8C37.7 12 38.8 14.5 38.8 17.2c.1 4.1-3.7 7.4-8.6 7.4zm0-14.2c-3.7 0-6.7 3-6.7 6.7 0 3.7 3 6.7 6.7 6.7 3.7 0 6.7-3 6.7-6.7 0-3.7-3-6.7-6.7-6.7zM12.3 7.4l-3 9.3-3-9.3H1.2L6.6 24h5.3l5.4-16.6h-5z" fill="white"/>
+                    </svg>
+                    Hire on Upwork
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ── GUARANTEE STRIP ── -->
+        <div class="mt-12 space-y-3">
+            <div class="guarantee-strip">
+                <i class="fa-solid fa-shield-halved text-blue-500"></i>
+                <span>100% Satisfaction Guarantee &nbsp;·&nbsp;</span>
+                <i class="fa-solid fa-rotate-left text-emerald-500"></i>
+                <span>Free Revisions &nbsp;·&nbsp;</span>
+                <i class="fa-brands fa-upwork text-green-600"></i>
+                <span>Upwork Protected Payments</span>
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-3">
+                Need a custom quote?
+                <a href="https://www.upwork.com/freelancers/~0193ace3dec77885d6?mp_source=share"
+                   target="_blank" rel="noopener noreferrer"
+                   class="text-blue-500 font-semibold hover:underline">
+                    Message me on Upwork →
+                </a>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    let isYearly = false;
+
+    function toggleBilling() {
+        isYearly = !isYearly;
+        const toggle = document.getElementById('billing-toggle');
+        const labelMonthly = document.getElementById('label-monthly');
+        const labelYearly = document.getElementById('label-yearly');
+
+        toggle.classList.toggle('on', isYearly);
+        labelMonthly.style.color = isYearly ? '#94a3b8' : '#0f172a';
+        labelYearly.style.color = isYearly ? '#0f172a' : '#94a3b8';
+
+        // Update all prices with a smooth animation
+        document.querySelectorAll('.price-amount').forEach(el => {
+            const monthly = parseInt(el.getAttribute('data-monthly'));
+            const yearly = Math.round(monthly * 0.8);
+            const target = isYearly ? yearly : monthly;
+
+            // Quick count-up animation
+            let start = parseInt(el.textContent);
+            const duration = 400;
+            const startTime = performance.now();
+
+            function animate(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // ease out
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(start + (target - start) * eased);
+                if (progress < 1) requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
+        });
+    }
+</script>
+</body>
+</html>

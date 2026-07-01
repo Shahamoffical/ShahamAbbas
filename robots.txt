@@ -1,0 +1,19 @@
+# robots.txt — Shaham Abbas Portfolio
+# https://shahamabbas.online/
+
+User-agent: *
+Allow: /
+
+# Block unnecessary files from crawlers
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /src/
+Disallow: /public/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /server.js
+Disallow: /app.js
+Disallow: /vercel.json
+
+# Sitemap location
+Sitemap: https://shahamabbas.online/sitemap.xml

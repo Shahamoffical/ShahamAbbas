@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Environment variables (KEEP SECRET!)
+.env
+
+# Build output
+# Removed public/output.css so Vercel can see it without building
+
+# System files
+.DS_Store
+Thumbs.db
